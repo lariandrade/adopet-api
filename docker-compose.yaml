@@ -1,0 +1,15 @@
+version: '3.1'
+services:
+  db:
+    image: mysql
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: adopet_api
+    ports:
+      - "3307:3306"
+    volumes:
+      - adopet_db_data:/var/lib/mysql
+
+volumes:
+  adopet_db_data:

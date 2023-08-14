@@ -7,12 +7,13 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.hateoas.RepresentationModel;
 
 @Entity
 @Table(name="tutores")
 @NoArgsConstructor
 @Data
-public class Tutor {
+public class Tutor extends RepresentationModel<Tutor> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)

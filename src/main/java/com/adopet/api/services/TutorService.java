@@ -16,8 +16,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
-
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
@@ -28,6 +26,11 @@ public class TutorService {
 
     public TutorService(TutorRepository tutorRepository) {
         this.tutorRepository = tutorRepository;
+    }
+
+    private Tutor getTutorById(Integer id) {
+        return tutorRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                "Nenhum tutor foi encontrado com esse id."));
     }
 
     public DadosDetalhamentoTutorDTO save(DadosCadastroTutorDTO dados) {
@@ -48,6 +51,9 @@ public class TutorService {
 
     public PagedModel<EntityModel<Tutor>> getAllTutores(Pageable pageable, PagedResourcesAssembler<Tutor> assembler) {
         Page<Tutor> tutoresPage = tutorRepository.findAll(pageable);
+        if (tutoresPage.isEmpty()) {
+            throw new ValidacaoException("Nenhum tutor encontrado");
+        }
         return assembler.toModel(tutoresPage, tutor -> {
             Integer id = tutor.getId();
             return EntityModel.of(tutor, linkTo(methodOn(TutorController.class).listarUm(id)).withSelfRel());
@@ -56,15 +62,8 @@ public class TutorService {
 
     public Tutor getOneTutor(Integer id) {
         var tutor = getTutorById(id);
-
         tutor.add(linkTo(methodOn(TutorController.class).listarTodos(null)).withRel("Lista de tutores"));
-
         return tutor;
-    }
-
-    private Tutor getTutorById(Integer id) {
-        return tutorRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-                "Nenhum tutor foi encontrado com esse id."));
     }
 
     public void delete(Integer id) {

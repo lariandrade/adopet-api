@@ -57,4 +57,11 @@ public class TutorController {
         return ResponseEntity.status(HttpStatus.OK).body(tutorAtualizado);
     }
 
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity<Void> deletar(@PathVariable Integer id) {
+        tutorService.delete(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
 }

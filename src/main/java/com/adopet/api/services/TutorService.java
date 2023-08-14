@@ -66,4 +66,9 @@ public class TutorService {
         return tutorRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                 "Nenhum tutor foi encontrado com esse id."));
     }
+
+    public void delete(Integer id) {
+        Tutor tutor = getTutorById(id);
+        tutorRepository.delete(tutor);
+    }
 }

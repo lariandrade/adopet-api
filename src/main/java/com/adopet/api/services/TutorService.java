@@ -17,13 +17,12 @@ public class TutorService {
     }
 
     public DadosDetalhamentoTutorDTO save(DadosCadastroTutorDTO dados) {
-
         if (!dados.senha().equals(dados.confirmacaoSenha())) {
             throw new ValidacaoException("Senhas não conferem!");
         }
 
         Tutor novoTutor = new Tutor(dados);
-
+        tutorRepository.save(novoTutor);
         return new DadosDetalhamentoTutorDTO(novoTutor);
     }
 }

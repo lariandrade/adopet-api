@@ -1,5 +1,6 @@
 package com.adopet.api.models;
 
+import com.adopet.api.dtos.DadosAtualizacaoTutorDTO;
 import com.adopet.api.dtos.DadosCadastroTutorDTO;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -24,5 +25,19 @@ public class Tutor {
         this.nome = dados.nome();
         this.email = dados.email();
         this.senha = dados.senha();
+    }
+
+    public void atualizarInformacoes(DadosAtualizacaoTutorDTO dados) {
+        if (dados.nome() != null) {
+            this.nome = dados.nome();
+        }
+
+        if (dados.email() != null){
+            this.email = dados.email();
+        }
+
+        if (dados.senha() != null){
+            this.senha = dados.senha();
+        }
     }
 }

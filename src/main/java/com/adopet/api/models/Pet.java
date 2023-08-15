@@ -21,9 +21,10 @@ public class Pet {
     private String idade;
     @Enumerated(EnumType.STRING)
     private PorteAnimal porteAnimal;
-    private String qualidades;
-    @Embedded
-    private Endereco endereco;
-    private String adotado;
+    private String caracteristicas;
+    private Boolean adotado;
+    @ManyToOne
+    @JoinColumn(name = "abrigo_id")
+    private Abrigo abrigo;
 
 }

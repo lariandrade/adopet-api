@@ -19,6 +19,7 @@ public class Pet {
     private Integer id;
     private String nome;
     private String idade;
+    private String imagem;
     @Enumerated(EnumType.STRING)
     private PorteAnimal porteAnimal;
     private String caracteristicas;

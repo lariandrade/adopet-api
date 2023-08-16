@@ -1,4 +1,4 @@
-package com.adopet.api.dtos;
+package com.adopet.api.dtos.tutor;
 
 import jakarta.validation.constraints.NotBlank;
 

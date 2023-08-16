@@ -1,7 +1,7 @@
 package com.adopet.api.models;
 
-import com.adopet.api.dtos.DadosAtualizacaoTutorDTO;
-import com.adopet.api.dtos.DadosCadastroTutorDTO;
+import com.adopet.api.dtos.tutor.DadosAtualizacaoTutorDTO;
+import com.adopet.api.dtos.tutor.DadosCadastroTutorDTO;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;

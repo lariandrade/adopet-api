@@ -1,8 +1,8 @@
 package com.adopet.api.controllers;
 
-import com.adopet.api.dtos.DadosAtualizacaoTutorDTO;
-import com.adopet.api.dtos.DadosCadastroTutorDTO;
-import com.adopet.api.dtos.DadosDetalhamentoTutorDTO;
+import com.adopet.api.dtos.tutor.DadosAtualizacaoTutorDTO;
+import com.adopet.api.dtos.tutor.DadosCadastroTutorDTO;
+import com.adopet.api.dtos.tutor.DadosDetalhamentoTutorDTO;
 import com.adopet.api.models.Tutor;
 import com.adopet.api.services.TutorService;
 import jakarta.transaction.Transactional;

@@ -43,8 +43,8 @@ public class TutorController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Tutor> listarUm(@PathVariable Integer id) {
-       var resl =  tutorService.getOneTutor(id);
-       return ResponseEntity.status(HttpStatus.OK).body(resl);
+       var tutor =  tutorService.getOneTutor(id);
+       return ResponseEntity.status(HttpStatus.OK).body(tutor);
     }
 
     @PutMapping("/{id}")

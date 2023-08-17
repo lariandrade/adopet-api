@@ -2,6 +2,7 @@ package com.adopet.api.models;
 
 import com.adopet.api.enums.PorteAnimal;
 
+import com.adopet.api.dtos.pet.DadosCadastroPetDTO;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
@@ -28,4 +29,13 @@ public class Pet {
     @JoinColumn(name = "abrigo_id")
     private Abrigo abrigo;
 
+    public Pet(DadosCadastroPetDTO dados, Abrigo abrigo) {
+        this.nome = dados.nome();
+        this.idade = dados.idade();
+        this.imagem = dados.imagem();
+        this.porteAnimal =  dados.porteAnimal();
+        this.caracteristicas = dados.caracteristicas();
+        this.adotado = dados.adotado();
+        this.abrigo = abrigo;
+    }
 }

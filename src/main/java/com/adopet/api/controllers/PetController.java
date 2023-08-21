@@ -1,5 +1,6 @@
 package com.adopet.api.controllers;
 
+import com.adopet.api.dtos.pet.DadosAtualizacaoPetDTO;
 import com.adopet.api.dtos.pet.DadosCadastroPetDTO;
 import com.adopet.api.dtos.pet.DadosDetalhamentoPetDTO;
 import com.adopet.api.models.Pet;
@@ -44,6 +45,13 @@ public class PetController {
     public ResponseEntity<Pet> listarUm(@PathVariable Integer id) {
         var pet =  petService.getOnePet(id);
         return ResponseEntity.status(HttpStatus.OK).body(pet);
+    }
+
+    @PutMapping("/{id}")
+    @jakarta.transaction.Transactional
+    public ResponseEntity<DadosDetalhamentoPetDTO> atualizar(@PathVariable Integer id, @RequestBody DadosAtualizacaoPetDTO dados) {
+        DadosDetalhamentoPetDTO petAtualizado = petService.update(id, dados);
+        return ResponseEntity.status(HttpStatus.OK).body(petAtualizado);
     }
 
 }

@@ -38,4 +38,9 @@ public class AdocaoService {
 
         return adocao;
    }
+
+    public void delete(Integer id) {
+        var adocao = adocaoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Adoção não cadastrada!"));
+        adocaoRepository.deleteById(id);
+    }
 }

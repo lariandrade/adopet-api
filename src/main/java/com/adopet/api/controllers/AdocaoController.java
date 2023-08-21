@@ -26,4 +26,11 @@ public class AdocaoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(adocao);
     }
 
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity<Void> deletar(@PathVariable Integer id) {
+        adocaoService.delete(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
 }

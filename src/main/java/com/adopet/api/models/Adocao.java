@@ -1,6 +1,6 @@
 package com.adopet.api.models;
 
-import com.adopet.api.dtos.DadosCadastroAdocaoDTO;
+import com.adopet.api.dtos.adocao.DadosCadastroAdocaoDTO;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;

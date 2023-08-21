@@ -1,6 +1,6 @@
 package com.adopet.api.controllers;
 
-import com.adopet.api.dtos.DadosCadastroAdocaoDTO;
+import com.adopet.api.dtos.adocao.DadosCadastroAdocaoDTO;
 import com.adopet.api.models.Adocao;
 import com.adopet.api.services.AdocaoService;
 import jakarta.transaction.Transactional;

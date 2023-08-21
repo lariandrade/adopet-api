@@ -54,4 +54,11 @@ public class PetController {
         return ResponseEntity.status(HttpStatus.OK).body(petAtualizado);
     }
 
+    @DeleteMapping("/{id}")
+    @jakarta.transaction.Transactional
+    public ResponseEntity<Void> deletar(@PathVariable Integer id) {
+        petService.delete(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
 }

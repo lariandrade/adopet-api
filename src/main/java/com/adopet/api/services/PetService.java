@@ -1,7 +1,6 @@
 package com.adopet.api.services;
 
 import com.adopet.api.controllers.PetController;
-import com.adopet.api.dtos.abrigo.DadosDetalhamentoAbrigoDTO;
 import com.adopet.api.dtos.pet.DadosAtualizacaoPetDTO;
 import com.adopet.api.dtos.pet.DadosDetalhamentoPetDTO;
 import com.adopet.api.exceptions.ValidacaoException;
@@ -76,5 +75,10 @@ public class PetService {
         var pet = getPetById(id);
         pet.atualizarInformacoes(dados);
         return new DadosDetalhamentoPetDTO(pet);
+    }
+
+    public void delete(Integer id) {
+        Pet pet = getPetById(id);
+        petRepository.delete(pet);
     }
 }

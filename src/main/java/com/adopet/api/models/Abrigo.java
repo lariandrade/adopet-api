@@ -2,6 +2,8 @@ package com.adopet.api.models;
 
 import com.adopet.api.dtos.abrigo.DadosAtualizacaoAbrigoDTO;
 import com.adopet.api.dtos.abrigo.DadosCadastroAbrigoDTO;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
@@ -25,7 +27,8 @@ public class Abrigo extends RepresentationModel<Abrigo> {
     private String email;
     @Embedded
     private Endereco endereco;
-    @OneToMany(mappedBy = "abrigo")
+    @OneToMany(mappedBy = "abrigo", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Pet> pets;
 
     public Abrigo(DadosCadastroAbrigoDTO dados) {

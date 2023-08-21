@@ -3,6 +3,7 @@ package com.adopet.api.models;
 import com.adopet.api.enums.PorteAnimal;
 
 import com.adopet.api.dtos.pet.DadosCadastroPetDTO;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
@@ -25,8 +26,9 @@ public class Pet {
     private PorteAnimal porteAnimal;
     private String caracteristicas;
     private Boolean adotado;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "abrigo_id")
+    @JsonBackReference
     private Abrigo abrigo;
 
     public Pet(DadosCadastroPetDTO dados, Abrigo abrigo) {

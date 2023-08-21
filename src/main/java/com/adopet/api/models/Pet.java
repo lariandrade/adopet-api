@@ -9,12 +9,13 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.hateoas.RepresentationModel;
 
 @Entity
 @Table(name="pets")
 @NoArgsConstructor
 @Data
-public class Pet {
+public class Pet extends RepresentationModel<Pet> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)

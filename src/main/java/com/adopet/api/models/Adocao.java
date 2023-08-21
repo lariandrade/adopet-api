@@ -1,5 +1,6 @@
 package com.adopet.api.models;
 
+import com.adopet.api.dtos.DadosCadastroAdocaoDTO;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,4 +26,9 @@ public class Adocao {
     @JoinColumn(name = "tutor_id")
     private Tutor tutor;
 
+    public Adocao(DadosCadastroAdocaoDTO dados, Pet pet, Tutor tutor) {
+        this.data = dados.data();
+        this.pet = pet;
+        this.tutor = tutor;
+    }
 }

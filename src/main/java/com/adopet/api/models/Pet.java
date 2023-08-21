@@ -53,4 +53,8 @@ public class Pet extends RepresentationModel<Pet> {
         this.porteAnimal = dados.porteAnimal() != null ? dados.porteAnimal() : this.porteAnimal;
 
     }
+
+    public void marcarComoAdotado() {
+        this.adotado = true;
+    }
 }
